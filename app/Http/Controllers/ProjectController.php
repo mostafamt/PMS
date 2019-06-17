@@ -58,7 +58,7 @@ class ProjectController extends Controller
 
     public function destroy($slug)
     {
-        $project = Project::find($slug)->firstOrFail();
+        $project = Project::find($slug);
         $project->delete();
         return redirect('project/index')->with('status' , 'Project deleted successfully!');
     }

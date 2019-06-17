@@ -30,5 +30,14 @@ Route::post('project/{slug?}/edit' , 'ProjectController@destroy');
 Route::get('project/{slug?}/update' , 'ProjectController@update');
 Route::post('project/{slug?}/update' , 'ProjectController@save');
 
+Route::get('department/create' , 'DepartmentController@create');
+Route::post('department/create' , 'DepartmentController@store');
 
+Route::get('departments' , 'DepartmentController@index');
+
+Route::get('department/{slug?}/edit' , 'DepartmentController@edit');
+Route::post('department/{slug?}/edit' , 'DepartmentController@destory');
+
+Route::get('department/{slug?}/update' , 'DepartmentController@update');
+Route::post('department/{slug?}/update' , 'DepartmentController@save');
 
