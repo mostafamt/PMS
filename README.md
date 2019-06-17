@@ -20,7 +20,7 @@ This is the first stone for our graduation project 'project Management System ' 
 
 
 ## Commands
-1 - git clone https://github.com/mostafamt/PMS <br>
+1 -  ``` git clone https://github.com/mostafamt/PMS``` <br>
 2 - cd PMS <br>
 3 - composer update <br>
 4 - cp .env.example .env <br>
