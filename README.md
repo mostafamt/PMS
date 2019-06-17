@@ -25,9 +25,9 @@ This is the first stone for our graduation project 'project Management System ' 
 3 - composer update <br>
 4 - cp .env.example .env <br>
 5 - php artisan key:generate <br>
-6 - php artisan serve <br>
-7 - edit .env file , edit these parameters : <br>
+6 - edit .env file , edit these parameters : <br>
     DB_DATABASE=pms <br>
     DB_USERNAME=root <br>
     DB_PASSWORD= <br>
-
+7 - php artisan migrate <br>
+8 - php artisan serve <br>
