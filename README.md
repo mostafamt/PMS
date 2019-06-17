@@ -23,7 +23,7 @@ This is the first stone for our graduation project 'project Management System ' 
 1 - git clone https://github.com/mostafamt/PMS <br>
 2 - cd PMS <br>
 3 - composer update <br>
-4 - rename .env.example to .env <br>
+4 - cp .env.example .env
 5 - php artisan key:generate <br>
 6 - php artisan serve <br>
 
