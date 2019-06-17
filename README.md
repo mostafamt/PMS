@@ -23,7 +23,7 @@ This is the first stone for our graduation project 'project Management System ' 
 1 -  ```git clone https://github.com/mostafamt/PMS``` <br>
 2 - ```cd PMS``` <br>
 3 - ```composer update``` <br>
-4 - ```cp .env.example .env``` <br>
+4 - ```copy .env.example .env``` <br>
 5 - ```php artisan key:generate``` <br>
 6 - edit .env file , edit these parameters : <br>
     DB_DATABASE=pms <br>
