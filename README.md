@@ -26,4 +26,8 @@ This is the first stone for our graduation project 'project Management System ' 
 4 - cp .env.example .env <br>
 5 - php artisan key:generate <br>
 6 - php artisan serve <br>
+7 - edit .env file : <br>
+    DB_DATABASE=pms
+    DB_USERNAME=root
+    DB_PASSWORD=
 
