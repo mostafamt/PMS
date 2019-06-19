@@ -2,13 +2,12 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=0.5">
 
         <title>PMS</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-            <!--style sheet framework-->
           <link rel="stylesheet" href="css/bootstrap.min.css" />
           <link rel="stylesheet" href="css/fontawesome.min.css" />
           <link rel="stylesheet" href="css/solid.min.css" />
@@ -17,7 +16,8 @@
           <link rel="stylesheet" href="css/main.css" />
 
         <!-- Styles -->
-       <!-- <style>
+        <!--
+        <style>
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -68,12 +68,10 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-        </style>-->
-        
+        </style> -->
     </head>
     <body>
-        
-          <!--Start Navbar-->
+        <!--Start Navbar-->
       <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -141,7 +139,7 @@
                           <p class="lead">Whatever you want,<br>we will help you to do it right</p>
                           <button class="btn btn-primary uppercase"><a href="{{ route('register') }}"></a>Get Started</button>
                       </div>
-                      <div class="header-img col-lg-6">
+                      <div class="header-img col-lg-6 ">
                           <img src="{{ asset('images/pensioen-voor-je-medewerkers-32eedc88.png') }}" />
                       </div>
                   </div>

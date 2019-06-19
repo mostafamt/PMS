@@ -1,6 +1,7 @@
 /*ٍStart Global Rules*/
 body
 {
+    overflow-x: hidden;
 
 }
 /*ٍEnd Global Rules*/
@@ -98,6 +99,10 @@ body
 
 /*End Navbar*/
 
+.col-sm
+{
+    overflow-x: hidden;
+}
 
 /*Start Class Header*/
 .header
@@ -109,6 +114,7 @@ body
     -o-background-size: cover;
     background-size:cover;
     color: #FFF;
+    overflow-x: hidden;
 }
 .header .overly
 {
@@ -488,7 +494,7 @@ body
 }
 .engineer h1
 {
-    font-size: 100px;
+    font-size: 70px;
     color: darkslateblue;
     font-family:serif;
     margin-bottom: 30px;
