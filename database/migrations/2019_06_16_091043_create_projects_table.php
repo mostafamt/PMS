@@ -15,10 +15,14 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->bigIncrements('id');
+             $table->integer('user_id')->unsigned();
+
             $table->string('project_name');
             $table->text('description');
-            $table->string('start_date');
-            $table->string('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->enum('ProjectStatus', array('Passive','Running', 'Finished'))->nullable();  
+
             $table->timestamps();
         });
     }

@@ -18,9 +18,10 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Project Name</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">End Date</th>
+                    <th scope="col">project</th>
+
+                    <th scope="col">before finish</th>
+                    <th scope="col">after finish</th>
                     <th scope="col">Description</th>
                 </tr>
             </thead>
@@ -32,8 +33,42 @@
                         <a href="{!! action('ProjectController@edit' , $project->id) !!}">{!! $project->project_name
                             !!}</a>
                     </td>
-                    <td>{!! $project->start_date !!}</td>
-                    <td>{!! $project->end_date !!}</td>
+                    
+                     
+                    <td>
+                        
+                        <?php
+
+                                        $date1=$project->end_date ;
+
+
+                                        $date2=$project->start_date ;
+
+                                        if($date1>$date2){
+                                        $s2=Carbon\Carbon::parse($date2)->diffForHumans(Carbon\Carbon::parse($date1));
+                                        echo $s2;
+                                        }
+
+                                ?>
+                    </td>
+                     
+                    
+                    <td> 
+                        <?php
+
+                                        $date1=$project->end_date ;
+
+
+                                        $date2=$project->start_date ;
+
+                                        if($date1<$date2){
+                                        $s2=Carbon\Carbon::parse($date2)->diffForHumans(Carbon\Carbon::parse($date1));
+                                        echo $s2;
+                                        }
+
+                                ?>
+                                    
+                    </td>
                     <td>{!! $project->description !!}</td>
                 </tr>
                 @endforeach

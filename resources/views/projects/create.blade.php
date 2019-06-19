@@ -21,25 +21,34 @@
         <div class="form-group">
             <!-- Date input -->
             <label class="control-label" for="date">Start Date</label>
-            <input class="form-control" id="start_date" name="start_date" placeholder="YYYY/MM/DD" type="text" />
+            <input class="form-control" id="start_date" name="start_date" placeholder="YYYY/MM/DD" type="date" />
         </div>
 
         <div class="form-group">
             <!-- Date input -->
             <label class="control-label" for="date">End Date</label>
-            <input class="form-control" id="end_date" name="end_date" placeholder="YYYY/MM/DD" type="text" />
+            <input class="form-control" id="end_date" name="end_date" placeholder="YYYY/MM/DD" type="date" />
         </div>
 
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Description</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
         </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Status</label>
+          <select name="ProjectStatus"><br><br>
+              <option value="Passive">Passive</option>
+              <option value="Running">Running</option>
+              <option value="Finished">Finished</option>
+         </select>
+     </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
 
-    <script>
+{{-- 
+   <script>
         $(document).ready(function(){
                   var start_date=$('input[id="start_date"]'); //our date input has the name "date"
                   var end_date=$('input[id="end_date"]');
@@ -54,5 +63,6 @@
                   end_date.datepicker(options);
                 });
     </script>
+--}}
 
     @endsection
