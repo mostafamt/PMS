@@ -1,4 +1,4 @@
-![](https://github.com/mostafamt/MyRepo/blob/master/home.jpg)
+![](https://github.com/mostafamt/MyRepo/blob/master/home.png)
 # pmanager
 This is the first stone for our graduation project 'project Management System ' .
 
