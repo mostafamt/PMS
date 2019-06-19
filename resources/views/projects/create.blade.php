@@ -47,7 +47,7 @@
     </form>
 
 
-{{-- 
+
    <script>
         $(document).ready(function(){
                   var start_date=$('input[id="start_date"]'); //our date input has the name "date"
@@ -63,6 +63,6 @@
                   end_date.datepicker(options);
                 });
     </script>
---}}
+
 
     @endsection
