@@ -15,9 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 Auth::routes();
 Route::resource('/projectSchaduling', 'projschController');
 
+=======
+Auth::routes(['verify' => true]);
+>>>>>>> fc33c71019ec3653c4f0faac2d45e5fad1d83bbb
 
 Route::get('/home', 'HomeController@index')->name('home');
 
