@@ -22,13 +22,13 @@
         <div class="form-group">
             <!-- Date input -->
             <label class="control-label" for="date">Start Date</label>
-            <input class="form-control" id="start_date" name="start_date" placeholder="{!! $project->start_date !!}" type="text" />
+            <input class="form-control" id="start_date" name="start_date" placeholder="{!! $project->start_date !!}" type="date" />
         </div>
 
         <div class="form-group">
             <!-- Date input -->
             <label class="control-label" for="date">End Date</label>
-            <input class="form-control" id="end_date" name="end_date" placeholder="{!! $project->end_date !!}" type="text" />
+            <input class="form-control" id="end_date" name="end_date" placeholder="{!! $project->end_date !!}" type="date" />
         </div>
 
         <div class="form-group">
@@ -39,7 +39,7 @@
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
-
+{{--
 <script>
     $(document).ready(function(){
                   var start_date=$('input[id="start_date"]'); //our date input has the name "date"
@@ -55,5 +55,5 @@
                   end_date.datepicker(options);
                 });
 </script>
-
+--}}
 @endsection

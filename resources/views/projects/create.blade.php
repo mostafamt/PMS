@@ -34,14 +34,7 @@
             <label for="exampleFormControlTextarea1">Description</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
         </div>
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Status</label>
-          <select name="ProjectStatus"><br><br>
-              <option value="Passive">Passive</option>
-              <option value="Running">Running</option>
-              <option value="Finished">Finished</option>
-         </select>
-     </div>
+         
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

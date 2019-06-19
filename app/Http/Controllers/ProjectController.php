@@ -18,7 +18,7 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-
+ if($request->get('start_date')< $request->get('end_date')){
              $project=new Project();
 
         $project->user_id=Auth::user()->id;
@@ -26,10 +26,12 @@ class ProjectController extends Controller
         $project->description=$request->input('description');
         $project->start_date=$request->input('start_date');
         $project->end_date=$request->input('end_date');
-        $project->ProjectStatus=$request->input('ProjectStatus');
 
         $project->save();
         return redirect('/project/create')->with('status' , 'Project created successfully!');
+        }else{
+    return redirect('/project/create')->with('status' , 'Project not created successfully because end date > start date!');
+}
 
           
 
@@ -59,6 +61,8 @@ class ProjectController extends Controller
 
     public function save(Request $request , $slug)
     {
+                if($request->get('start_date')< $request->get('end_date')){
+
         $project = Project::find($slug);
         $project->project_name = $request->get('name') ;
         $project->start_date = $request->get('start_date');
@@ -67,6 +71,9 @@ class ProjectController extends Controller
         $project->save();
 
         return redirect(action('ProjectController@update' , $slug ))->with('status' , 'The project updated successfully!');
+}else{
+    return 'nooooooooooo';
+}
     }
 
     public function destroy($slug)

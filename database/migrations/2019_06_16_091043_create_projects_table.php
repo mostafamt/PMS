@@ -21,7 +21,8 @@ class CreateProjectsTable extends Migration
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date');
-            $table->enum('ProjectStatus', array('Passive','Running', 'Finished'))->nullable();  
+            $table->integer('isfinished')->default(0);
+  
 
             $table->timestamps();
         });

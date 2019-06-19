@@ -22,13 +22,18 @@
 
                     <th scope="col">before finish</th>
                     <th scope="col">after finish</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">status</th>
                 </tr>
             </thead>
             <tbody>
+                {{-- counter for all projects --}}
+                <?php
+                   $counter = 0 ;
+                ?>
                 @foreach ($projects as $project)
                 <tr>
-                    <th scope="row">{!! $project->id !!}</th>
+                    <th scope="row"><?php echo $counter=++$counter;  ?></th>
+
                     <td>
                         <a href="{!! action('ProjectController@edit' , $project->id) !!}">{!! $project->project_name
                             !!}</a>
@@ -42,9 +47,9 @@
                                         $date1=$project->end_date ;
 
 
-                                        $date2=$project->start_date ;
+                                        $date2= Carbon\Carbon::now();
 
-                                        if($date1>$date2){
+                                        if($date1>$date2  && $project->isfinished==0){
                                         $s2=Carbon\Carbon::parse($date2)->diffForHumans(Carbon\Carbon::parse($date1));
                                         echo $s2;
                                         }
@@ -59,9 +64,8 @@
                                         $date1=$project->end_date ;
 
 
-                                        $date2=$project->start_date ;
-
-                                        if($date1<$date2){
+                                        $date2= Carbon\Carbon::now();
+                                        if($date1<$date2 && $project->isfinished==0){
                                         $s2=Carbon\Carbon::parse($date2)->diffForHumans(Carbon\Carbon::parse($date1));
                                         echo $s2;
                                         }
@@ -69,7 +73,27 @@
                                 ?>
                                     
                     </td>
-                    <td>{!! $project->description !!}</td>
+                    <td>
+                          <?php
+
+                                        $date1=$project->end_date ;
+
+
+                                        $date2= Carbon\Carbon::now();
+
+                                        if($date1>$date2  && $project->isfinished==0){
+                                        $s2=Carbon\Carbon::parse($date2)->diffForHumans(Carbon\Carbon::parse($date1));
+                                        echo 'passive';
+                                        }elseif($date1<$date2  && $project->isfinished==0){
+                                        $s2=Carbon\Carbon::parse($date2)->diffForHumans(Carbon\Carbon::parse($date1));
+                                        echo 'running';
+                                        }else{
+                                            echo 'finished';
+                                        }
+
+                                ?>
+
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

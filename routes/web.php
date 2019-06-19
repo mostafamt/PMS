@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::resource('/projectSchaduling', 'projschController');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
 
 
 
@@ -18,6 +19,50 @@
             </form>
 
         </div>
+    </div>
+</div>
+
+ <div class="row mt-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">project</th>
+
+                    <th scope="col">before finish</th>
+                    <th scope="col">after finish</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{-- counter for all projects --}}
+                <?php
+                   $counter = 0 ;
+                ?>
+               
+                <tr>
+                    <th scope="row"><?php echo $counter=++$counter;  ?></th>
+                    <td>
+                        <a href=""> hello</a>
+                           
+                    </td>
+                    
+                     
+                    <td>
+                        
+                       t1
+                    </td>
+                     
+                    
+                    <td> 
+                       t2
+                                    
+                    </td>
+                    <td>t3</td>
+                </tr>
+              
+            </tbody>
+        </table>
     </div>
 </div>
 
