@@ -18,25 +18,20 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
- if($request->get('start_date')< $request->get('end_date')){
-             $project=new Project();
+        if ( $request->get('start_date')< $request->get('end_date') ) {
+            $project=new Project();
+            $project->user_id=Auth::user()->id;
+            $project->project_name=$request->input('name');
+            $project->description=$request->input('description');
+            $project->start_date=$request->input('start_date');
+            $project->end_date=$request->input('exnd_date');
 
-        $project->user_id=Auth::user()->id;
-        $project->project_name=$request->input('name');
-        $project->description=$request->input('description');
-        $project->start_date=$request->input('start_date');
-        $project->end_date=$request->input('end_date');
-
-        $project->save();
+            $project->save();
         return redirect('/project/create')->with('status' , 'Project created successfully!');
         }else{
     return redirect('/project/create')->with('status' , 'Project not created successfully because end date > start date!');
 }
 
-          
-
-            
-       
     }
 
     public function index()

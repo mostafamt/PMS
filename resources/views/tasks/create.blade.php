@@ -12,10 +12,10 @@
             {{ session('status') }}
         </div>
         @endif
-        <legend>Create Project</legend>
+        <legend>Create Task</legend>
         <div class="form-group">
-            <label for="formGroupExampleInput">Project Name</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Project Name" name="name">
+            <label for="formGroupExampleInput">Task Name</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Task Name" name="name">
         </div>
 
         <div class="form-group">
@@ -41,21 +41,19 @@
 
 
 
-   <script>
+    <script>
         $(document).ready(function(){
-                  var start_date=$('input[id="start_date"]'); //our date input has the name "date"
-                  var end_date=$('input[id="end_date"]');
-                  var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-                  var options={
-                    format: 'yyyy/mm/dd',
-                    container: container,
-                    todayHighlight: true,
-                    autoclose: true,
-                  };
-                  start_date.datepicker(options);
-                  end_date.datepicker(options);
-                });
+                      var start_date=$('input[id="start_date"]'); //our date input has the name "date"
+                      var end_date=$('input[id="end_date"]');
+                      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+                      var options={
+                        format: 'yyyy/mm/dd',
+                        container: container,
+                        todayHighlight: true,
+                        autoclose: true,
+                      };
+                      start_date.datepicker(options);
+                      end_date.datepicker(options);
+                    });
     </script>
-
-
-    @endsection
+@endsection

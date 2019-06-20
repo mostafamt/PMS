@@ -11,7 +11,7 @@
     </div>
     @endif
     <div class="row">
-        <a href="/project/create" class="btn btn-success">New Project</a>
+        <a href="/project/create" class="btn btn-success"><i class="fa fa-plus"></i> New Project</a>
     </div>
     <div class="row mt-3">
         <table class="table">
@@ -38,10 +38,10 @@
                         <a href="{!! action('ProjectController@edit' , $project->id) !!}">{!! $project->project_name
                             !!}</a>
                     </td>
-                    
-                     
+
+
                     <td>
-                        
+
                         <?php
 
                                         $date1=$project->end_date ;
@@ -56,9 +56,9 @@
 
                                 ?>
                     </td>
-                     
-                    
-                    <td> 
+
+
+                    <td>
                         <?php
 
                                         $date1=$project->end_date ;
@@ -71,7 +71,7 @@
                                         }
 
                                 ?>
-                                    
+
                     </td>
                     <td>
                           <?php
