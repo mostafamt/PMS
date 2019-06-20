@@ -27,7 +27,8 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = Department::all();
-        return view('department.index' , compact('departments'));
+        $counter = 1 ;
+        return view('department.index' , compact('departments' , 'counter'));
     }
 
     public function edit($slug)

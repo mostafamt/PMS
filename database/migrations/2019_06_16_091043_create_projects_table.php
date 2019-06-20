@@ -19,7 +19,7 @@ class CreateProjectsTable extends Migration
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date');
-            $table->integer('is_finished')->default(0);
+            $table->tinyInteger('status')->default(1);
             $table->integer('user_id')->unsigned();
             $table->timestamps();
         });

@@ -5,11 +5,19 @@
     <form method="post">
         @csrf
         @foreach ($errors->all() as $error)
-        <p class="alert alert-danger">{{ $error }}</p>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ $error }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         @endforeach
         @if (session('status'))
-        <div class="alert alert-success">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('status') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
         <legend>Update Project</legend>
@@ -22,13 +30,15 @@
         <div class="form-group">
             <!-- Date input -->
             <label class="control-label" for="date">Start Date</label>
-            <input class="form-control" id="start_date" name="start_date" placeholder="{!! $project->start_date !!}" type="text" />
+            <input class="form-control" id="start_date" name="start_date" placeholder="{!! $project->start_date !!}"
+                type="text" />
         </div>
 
         <div class="form-group">
             <!-- Date input -->
             <label class="control-label" for="date">End Date</label>
-            <input class="form-control" id="end_date" name="end_date" placeholder="{!! $project->end_date !!}" type="text" />
+            <input class="form-control" id="end_date" name="end_date" placeholder="{!! $project->end_date !!}"
+                type="text" />
         </div>
 
         <div class="form-group">
@@ -36,10 +46,18 @@
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                 name="description">{!! $project->description !!}</textarea>
         </div>
+
+        <div class="form-group">
+            <label>
+                <input type="checkbox" name="status" {!! $project->status == 3 ?"checked":""!!} >
+                Close this ticket?
+            </label>
+        </div>
+
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
-{{--
+
 <script>
     $(document).ready(function(){
                   var start_date=$('input[id="start_date"]'); //our date input has the name "date"
@@ -55,5 +73,5 @@
                   end_date.datepicker(options);
                 });
 </script>
---}}
+
 @endsection
