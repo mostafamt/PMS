@@ -1,7 +1,44 @@
+<head>
+    <style>
+        .brand
+        {
+            color:dodgerblue;
+            font-weight: bolder;
+            font-size: 20px;
+        }
+        .brand:hover
+        {
+            color:#FFF ;
+        }
+        .navbar
+        {
+            background: linear-gradient(45deg, black, transparent) !important;
+            padding:0px;
+        }
+        .card-header
+        {
+            background: linear-gradient(45deg, black, transparent) !important;
+            color: #FFF;
+            font-weight: bolder;
+            font-size: 20px;
+        }
+        .navbar-expand-md .navbar-nav .nav-link
+        {
+            font-size: 20px !important;
+            color: dodgerblue;
+        }
+        .navbar-expand-md .navbar-nav .nav-link:hover
+        {
+            color: #FFF;
+        }
+        
+    </style>
+    
+</head>
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+             <span class="brand">PMS</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

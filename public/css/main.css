@@ -12,6 +12,7 @@ body
 .navbar
 {
     background:#d3d7e2;
+     background: linear-gradient(45deg, black, transparent) !important;
     border: none;
     color: #3097D1;
 
@@ -63,8 +64,9 @@ body
 }
 .nav .dropdown .btn-group a
 {
-      margin: 10px;
-      margin-top: 20px; !important;
+    border-radius: 10%;
+    padding: 10px;
+    padding-bottom: 3px;
 }
 .nav .dropdown .btn-group .dropdown-menu
 {
@@ -77,6 +79,7 @@ body
     padding: 0px;
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 5px;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
@@ -89,12 +92,21 @@ body
 
 }
 
-.nav .dropdown .btn-group .dropdown-men li .main
+.nav .dropdown .btn-group .main
 {
-  margin-top: 12px;
-  margin-left: 10px;
-  padding-top: 0;
+    
+    padding: 10px;
+    color: #FFF;
+    
 
+}
+.btn-group>.btn:last-child:not(:first-child), 
+.btn-group>.dropdown-toggle:not(:first-child)
+{
+    margin-left: 15px;
+    width: 70px;
+    padding: 5px;
+    float: right;
 }
 
 /*End Navbar*/
@@ -146,19 +158,23 @@ body
 }
 .header button
 {
-     background-color:  #3097D1;
+    
     margin-top: 20px;
     margin-bottom: 30px;
-    font-weight: bold;
-    border: none;
     margin-left: 50px;
     height: 40px;
     font-size: 18px;
-    border: 2px solid #FFF;
+    color: #FFF;
+    border: 1px solid #FFF;
 }
 .header button:hover
 {
-    border: 2px solid #FFF;
+      border: 1px solid #FFF;
+}
+.header button a    
+{
+    text-decoration: none;
+    color: #FFF;
 }
 .header .header-img img
 {
@@ -318,19 +334,22 @@ body
 }
 .can-do button
 {
-    background-color:  #3097D1;
     margin-top: 20px;
     margin-bottom: 30px;
-    font-weight: bold;
-    border: none;
     margin-left: 50px;
     height: 40px;
     font-size: 18px;
-    border: 2px solid #FFF;
+    color: #FFF;
+    border: 1px solid #FFF;
 }
 .can-do button:hover
 {
-    border: 2px solid #FFF;
+    border: 1px solid #FFF;
+}
+.can-do button a    
+{
+    text-decoration: none;
+    color: #FFF;
 }
 
 
@@ -573,19 +592,22 @@ body
 }
 .help button
 {
-    background-color:  #3097D1;
+  
     margin-top: 20px;
     margin-bottom: 30px;
-    font-weight: bold;
-    border: none;
     margin-left: 50px;
     height: 40px;
     font-size: 18px;
-    border: 2px solid #FFF;
+    border: 1px solid #FFF;
 }
 .help button:hover
 {
-    border: 2px solid #FFF;
+    border: 1px solid #FFF;
+}
+.help button a
+{
+    text-decoration: none;
+    color: #FFF;
 }
 .help img
 {
@@ -656,23 +678,22 @@ body
     border-bottom: 1px solid #AAA;
     border-radius: 0;
 }
-.contact .btn
+.contact .button
 {
-    margin: 30px auto;
+    margin-top: 40px;;
     display: block;
     padding: 8px 20px;
-    border: 2px solid #FFF;
+    border: 1px solid #FFF !important;
     color: #FFF;
     border-radius: 8px;
     font-size: 16px;
     font-weight: bold;
-    background-color: #3097D1;
 }
 .panel-default>.panel-heading
 {
-  background-color:#3097D1;
-  color: #FFF;
-  padding: 15px;
+    background-color:#3097D1;
+    color: #FFF;
+    padding: 15px;
     font-size: 20px;
 }
 .panel-body
@@ -706,7 +727,7 @@ body
     margin-top: 50px;
     border-radius: 20px;
 }
-.main
+/*.main
 {
     margin-bottom: 20px;
     background-color: #337ab7;
@@ -715,7 +736,7 @@ body
     color: #FFF;
     top: 0px;
     border-radius: 20px 20px 0 0;
-}
+}*/
 .choice .btn
 {
     width: 150px;

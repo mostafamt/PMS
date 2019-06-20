@@ -11,7 +11,7 @@
     </div>
     @endif
     <div class="row">
-        <a href="/project/create" class="btn btn-success"><i class="fa fa-plus"></i> New Project</a>
+        <a href="/project/create" class="btn btn-primary"><i class="fa fa-plus"></i> New Project</a>
     </div>
     <div class="row mt-3">
         <table class="table">

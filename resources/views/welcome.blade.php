@@ -15,60 +15,7 @@
           <!--My Stylesheet css-->
           <link rel="stylesheet" href="css/main.css" />
 
-        <!-- Styles -->
-        <!--
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style> -->
+    
     </head>
     <body>
         <!--Start Navbar-->
@@ -110,7 +57,7 @@
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span>
                     </button>
                       @auth
-                      <a class="main" href="{{ url('/home') }}">Main</a>
+                      <button class="btn btn-primary"><a class="main" href="{{ url('/home') }}">{{ Auth::user()->name }}</a></button>
                       @else
                     <ul class="dropdown-menu">
                       <li><a href="{{ route('login') }}">Login</a></li>
@@ -137,7 +84,7 @@
                           <h1>PROJECT MANAGEMENT</h1>
                           <h2>Manage Your Project,<br>By Easy Way.</h2>
                           <p class="lead">Whatever you want,<br>we will help you to do it right</p>
-                          <button class="btn btn-primary uppercase"><a href="{{ route('register') }}"></a>Get Started</button>
+                          <button class="btn btn-primary uppercase"><a href="{{ route('register') }}">Get Started</a></button>
                       </div>
                       <div class="header-img col-lg-6 ">
                           <img src="{{ asset('images/pensioen-voor-je-medewerkers-32eedc88.png') }}" />
@@ -222,7 +169,7 @@
                       </div>
                   </div>
                   <h1>Getting started is easy.</h1>
-                  <button class="btn btn-primary">Sign up for free</button>
+                    <button class="btn btn-primary"><a href="{{ route('register') }}">Sign up for free</a></button>
               </div>
           </div>
       </div>
@@ -386,7 +333,7 @@
                   <div class="col-md-8">
                       <h1>You can.You will.<br> We’ll help.</h1>
                       <p class="lead">Hardware project, Software project, Archtictur project, any project naeed to management by true way —that’s where we come in.</p>
-                      <button class="btn btn-primary">Start Your Project</button>
+                       <button class="btn btn-primary"><a href="{{ route('register') }}">Start Your Project</a></button>
                   </div>
               </div>
           </div>

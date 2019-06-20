@@ -11,7 +11,7 @@
     </div>
     @endif
     <div class="row">
-        <a href="/department/create" class="btn btn-success">New Department</a>
+        <a href="/department/create" class="btn btn-primary">New Department</a>
     </div>
     <div class="row mt-3">
         <table class="table">
