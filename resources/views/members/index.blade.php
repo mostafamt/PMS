@@ -28,7 +28,7 @@
                     <td>{!! $user->name !!}</td>
                     <td>{!! $user->user_name !!}</td>
                     <td>{!! $user->mobile !!}</td>
-                    <td>{!! $user->address !!}</td>
+                    <td>{!! $user->email !!}</td>
                 </tr>
                 @endforeach
             </tbody>
