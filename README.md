@@ -30,5 +30,5 @@ This is the first stone for our graduation project 'project Management System ' 
     DB_USERNAME=root <br>
     DB_PASSWORD= <br>
 7 - ```php artisan migrate``` <br>
-8 - ```php artisan db:seed```<br>
+8 - This step is optional to fill database : ```php artisan db:seed```<br>
 9 - ```php artisan serve``` <br>
