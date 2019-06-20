@@ -19,20 +19,25 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Projects
 Route::get('project/create' , 'ProjectController@create');
 Route::post('project/create' , 'ProjectController@store');
 
 Route::get('project/index' , 'ProjectController@index');
 
-Route::get('project/{slug?}/edit' , 'ProjectController@edit');
-Route::post('project/{slug?}/edit' , 'ProjectController@destroy');
+Route::get('project/{id?}/edit' , 'ProjectController@edit');
+Route::post('project/{id?}/edit' , 'ProjectController@destroy');
 
-Route::get('project/{slug?}/update' , 'ProjectController@update');
-Route::post('project/{slug?}/update' , 'ProjectController@save');
+Route::get('project/{id?}/update' , 'ProjectController@update');
+Route::post('project/{id?}/update' , 'ProjectController@save');
 
+// Tasks
 Route::get('project/{id?}/task/create' , 'TaskController@create');
 Route::post('project/{id?}/task/create' , 'TaskController@store');
 
+Route::get('project/{project_id?}/task/{task_id?}/edit' , 'TaskController@edit');
+
+// Departments
 Route::get('department/create' , 'DepartmentController@create');
 Route::post('department/create' , 'DepartmentController@store');
 

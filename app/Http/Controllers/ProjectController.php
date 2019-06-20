@@ -45,7 +45,9 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $project = Project::find($id);
-        return view('projects.edit' , compact('project'));
+        $tasks = $project->tasks()->get();
+        $counter = 1 ;
+        return view('projects.edit' , compact('project' ,'tasks' ,'counter'));
     }
 
     public function update($id)

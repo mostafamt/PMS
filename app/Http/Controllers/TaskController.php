@@ -26,6 +26,11 @@ class TaskController extends Controller
             'project_id' => $id ,
         ));
         $task->save();
-        return redirect(action('TaskController@create' , $id ))->with('status' , 'Task created successfully!');
+        return redirect(action('ProjectController@edit' , $id ))->with('status' , 'Task created successfully!');
+    }
+
+    public function edit($project_id , $task_id)
+    {
+        return view('tasks.edit');
     }
 }
