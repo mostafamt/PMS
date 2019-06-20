@@ -37,6 +37,9 @@ Route::post('project/{id?}/task/create' , 'TaskController@store');
 
 Route::get('project/{project_id?}/task/{task_id?}/edit' , 'TaskController@edit');
 
+// Members
+Route::get('members' , 'MemberController@index');
+
 // Departments
 Route::get('department/create' , 'DepartmentController@create');
 Route::post('department/create' , 'DepartmentController@store');

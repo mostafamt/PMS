@@ -1,0 +1,38 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    @foreach ($errors->all() as $error)
+    <p class="alert alert-danger">{{ $error }}</p>
+    @endforeach
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    @endif
+    <legend>Members</legend>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                <tr>
+                    <th scope="row">{!! $counter++ !!}</th>
+                    <td>{!! $user->name !!}</td>
+                    <td>{!! $user->user_name !!}</td>
+                    <td>{!! $user->mobile !!}</td>
+                    <td>{!! $user->address !!}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+@endsection
