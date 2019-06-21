@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="container">
-    <form method="post">
+    <form method="post" action="{{ route('savesupervisor',$task->id) }}">
+         <input type="hidden" name="_method" value="PUT">
+
         @csrf
         @foreach ($errors->all() as $error)
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -20,39 +22,55 @@
             </button>
         </div>
         @endif
-        <legend>Update Project</legend>
+        <legend>Add Super Visor</legend>
         <div class="form-group">
-            <label for="formGroupExampleInput">Project Name</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Project Name" name="name"
-                value="{!! $project->project_name !!}">
+           
+            <input type="hidden" class="form-control" id="formGroupExampleInput" placeholder="Project Name" name="name"
+                value="{!! $task->name !!}">
+        
+          <div class="form-group">
+            <label for="formGroupExampleInput">User Name</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="user name of super visor" name="supervisor">
+               
+        </div>
+
+            <input  name="project" value="{{ $project->id }}"  type="hidden" />
+
+            
+        <div class="form-group">
+            <!-- Date input -->
+          
+            <input class="form-control" id="start_date" name="start_date" value="{!! $project->start_date !!}"
+                type="hidden" />
         </div>
 
         <div class="form-group">
             <!-- Date input -->
-            <label class="control-label" for="date">Start Date</label>
-            <input class="form-control" id="start_date" name="start_date" placeholder="{!! $project->start_date !!}"
-                type="text" />
+           
+            <input class="form-control" id="end_date" name="end_date" value="{!! $project->end_date !!}"
+                type="hidden" />
         </div>
 
-        <div class="form-group">
+
+{{--
             <!-- Date input -->
-            <label class="control-label" for="date">End Date</label>
-            <input class="form-control" id="end_date" name="end_date" placeholder="{!! $project->end_date !!}"
-                type="text" />
-        </div>
+           
+            <input class="form-control" id="start_date" name="start_date" value="{!! $task->start_date !!}" 
+                type="hidden" />
+      
 
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Description</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                name="description">{!! $project->description !!}</textarea>
-        </div>
+     
+            <input class="form-control" id="end_date" name="end_date" value="{!! $task->end_date !!}"
+                type="hidden" />
+      
 
-        <div class="form-group">
-            <label>
-                <input type="checkbox" name="status" {!! $project->status == 3 ?"checked":""!!} >
-                Close this ticket?
-            </label>
-        </div>
+       --}}
+         
+             <input class="form-control" id="end_date" name="desc" value="{!! $task->description !!}"  type="hidden" />
+           
+       
+
+        
 
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

@@ -11,7 +11,7 @@
     </div>
     @endif
     <div class="row">
-        <a href="/department/create" class="btn btn-primary">New Department</a>
+        <a href="/department/create" class="btn btn-primary"><i class="fa fa-plus"></i> New Department</a>
     </div>
     <div class="row mt-3">
         <table class="table">
@@ -25,7 +25,7 @@
             <tbody>
                 @foreach ($departments as $department)
                 <tr>
-                    <th scope="row">{!! $department->id !!}</th>
+                    <th scope="row">{!! $counter++ !!}</th>
                     <td>
                         <a href="{!! action('DepartmentController@edit' , $department->id ) !!}">{!! $department->name !!}</a>
                     </td>

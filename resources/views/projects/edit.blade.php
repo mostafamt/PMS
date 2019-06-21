@@ -1,3 +1,11 @@
+<?php
+
+  use App\Task;
+  use App\User;
+
+?>
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -48,6 +56,9 @@
                         <th scope="col">Start Date</th>
                         <th scope="col">End Date</th>
                         <th scope="col">Description</th>
+
+                        <th scope="col">Super Visor</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -63,6 +74,19 @@
                         <td>{!! $task->start_date !!}</td>
                         <td>{!! $task->end_date !!}</td>
                         <td>{!! $task->description !!}</td>
+                        
+  {{--to add super visor name--}}
+<?php 
+  $user=User::where('id',$task->user_id)->first();
+  if($task->user_id==null){
+      ?> <td>  <a href="{{ route('addsupervisor',$task->id) }}" > Add Super Visor </a>  </td> <?php
+  }else{
+      echo "<td> $user->name </td>" ;
+  }
+ 
+?>
+                   
+
                     </tr>
                     @endforeach
                 </tbody>

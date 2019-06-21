@@ -27,9 +27,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('project/create' , 'ProjectController@create');
 Route::post('project/create' , 'ProjectController@store');
 
-Route::get('project/index' , 'ProjectController@index');
+Route::get('project/index' , 'ProjectController@index')->name('project.index');
 
-Route::get('project/{id?}/edit' , 'ProjectController@edit');
+Route::get('project/{id?}/edit' , 'ProjectController@edit')->name('project.show');
 Route::post('project/{id?}/edit' , 'ProjectController@destroy');
 
 Route::get('project/{id?}/update' , 'ProjectController@update');
@@ -40,6 +40,11 @@ Route::get('project/{id?}/task/create' , 'TaskController@create');
 Route::post('project/{id?}/task/create' , 'TaskController@store');
 
 Route::get('project/{project_id?}/task/{task_id?}/edit' , 'TaskController@edit');
+
+//add super visor
+Route::get('/task/{id}/Addsupervisor' , 'TaskController@addsupervisor')->name('addsupervisor');
+Route::put('/task/{id}/Addsupervisor' , 'TaskController@savesupervisor')->name('savesupervisor');
+
 
 // Members
 Route::get('members' , 'MemberController@index');

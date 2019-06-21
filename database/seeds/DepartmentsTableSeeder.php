@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ProjectsTableSeeder extends Seeder
+class DepartmentsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,12 +16,9 @@ class ProjectsTableSeeder extends Seeder
         $limit = 10 ;
         $password = 'secret' ;
         for($i = 0 ; $i < $limit ; $i++){
-            DB::table('projects')->insert([
-                'project_name' => $faker->word ,
-                'start_date' => $faker->time($format = 'Y:m:d',$max = 'now'),
-                'end_date' => $faker->time($format = 'Y:m:d',$min = 'now'),
+            DB::table('departments')->insert([
+                'name' => $faker->word ,
                 'description' => $faker->text ,
-                'user_id' => 1 ,
             ]);
         }
     }

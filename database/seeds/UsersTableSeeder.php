@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //
-        $faker = Faker\Factory::create('en_GB');
+        $faker = Faker\Factory::create('en_US');
         $limit = 10 ;
         $password = 'secret' ;
         for($i = 0 ; $i < $limit ; $i++){
