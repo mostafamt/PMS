@@ -1,23 +1,24 @@
-<head>
+    <head>
     <style>
         .brand
         {
-            color:dodgerblue;
+            color:#FFF;
             font-weight: bolder;
             font-size: 20px;
         }
         .brand:hover
         {
-            color:#FFF ;
+            color:dodgerblue;
         }
         .navbar
         {
-            background: linear-gradient(45deg, black, transparent) !important;
+            background:rgba(36,73,95,0.8)!important;
+            
             padding:0px;
         }
         .card-header
         {
-            background: linear-gradient(45deg, black, transparent) !important;
+            background-color:rgba(36,73,95,0.8)!important;
             color: #FFF;
             font-weight: bolder;
             font-size: 20px;
@@ -25,11 +26,11 @@
         .navbar-expand-md .navbar-nav .nav-link
         {
             font-size: 20px !important;
-            color: dodgerblue;
+            color: #FFF;
         }
         .navbar-expand-md .navbar-nav .nav-link:hover
         {
-            color: #FFF;
+            color: dodgerblue;
         }
         
     </style>
@@ -74,23 +75,31 @@
                     <a class="nav-link" href="/members">Members</a>
                 </li>
                 <li class="nav-item dropdown">
+                     
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
+                    
+                    
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ url('/profile') }}">{{ __('Profile') }}</a>
+                        
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
+                        
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                             style="display: none;">
                             @csrf
                         </form>
+                        
                     </div>
                 </li>
+                
                 @endguest
             </ul>
         </div>
