@@ -30,6 +30,7 @@
         {
             width: 80%;
             border-radius: 10% 10% 0 0 ;
+            height: 70%;
             
         }
         .profile-img .file
@@ -74,7 +75,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img src="images/one.jpg" alt=""/>
                             <div class="file btn btn-lg btn-primary">
                                 <input type="file" name="file" value="Change Photo"/>
                             </div>
