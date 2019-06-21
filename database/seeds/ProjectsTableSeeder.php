@@ -12,7 +12,7 @@ class ProjectsTableSeeder extends Seeder
     public function run()
     {
         //
-        $faker = Faker\Factory::create('en_US');
+        $faker = Faker\Factory::create('en_GB');
         $limit = 10 ;
         $password = 'secret' ;
         for($i = 0 ; $i < $limit ; $i++){
