@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Projsch;
+use Illuminate\Support\Facades\Auth;
 
-class projschController extends Controller
+use App\Task;
+use App\Subtask;
+use App\Project;
+
+
+
+class subtaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,10 +28,10 @@ class projschController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $projsch=Projsch::all();
-        return view('projsch.create',compact('projsch'));
+        $task=Task::find($id);
+        return view('subtask.create',compact('task'));
     }
 
     /**
@@ -34,26 +40,31 @@ class projschController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-         $proj=new Projsch();
-                 $proj->project_id=$request->input('Project');
-                // $proj->user_id=Auth::user()->id;
+$request->validate([
+    'name' => 'required',
+    'start_date' => 'required',
+    'end_date' => 'required',
+    'description' => 'required',
+
+]);
+
+       $task=Task::find($id);
+       $project=Project::where('id',$task->project_id)->first();
+      
+       $subtask=new Subtask();
+       $subtask->name=$request->input('name');
+       $subtask->start_date=$request->input('start_date');
+       $subtask->end_date=$request->input('end_date');
+       $subtask->description=$request->input('description');
+       $subtask->task_id=$task->id;
+       $subtask->save();
+       return redirect(action('TaskController@edit' , [ 'project_id' => $project->id , 'task_id' => $task->id ]))->with('status' , 'Sub Task'.'  ' .$request->input('name') . '  ' .'created successfully!');
+       // href="{!! action('TaskController@edit' , [ 'project_id' => $project->id , 'task_id' => $task->id ] ) !!}"
+       
 
 
-        $proj->TaskName=$request->input('TaskName');
-        $proj->DurationDays=$request->input('DurationDays');
-        $proj->Dependance1=$request->input('Dependance1');
-        $proj->Dependance2=$request->input('Dependance2');
-
-        $proj->StartDate=$request->input('StartDate');
-        $proj->endDate=$request->input('endDate');
-        $proj->ActalEndDate=$request->input('ActalEndDate');
-        $proj->projschadulingStatus=$request->input('status');
-
-
-        $proj->save();
-        return redirect(route('project.create'));
     }
 
     /**

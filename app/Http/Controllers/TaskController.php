@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\Task;
 use App\User;
+use App\Subtask;
+
 
 
 class TaskController extends Controller
@@ -36,8 +38,13 @@ class TaskController extends Controller
 
     public function edit($project_id , $task_id)
     {
+      $counter=1;
+        $task=Task::where('id', $task_id)->first();
+        $subtask=Subtask::where('task_id', $task_id)->get();
 
-        return view('tasks.edit');
+        $project=Project::where('id',$project_id)->first();
+
+        return view('tasks.edit',compact('task','project','subtask','counter'));
     }
     public function addsupervisor($id )
     {
@@ -47,6 +54,8 @@ class TaskController extends Controller
 
            return view('tasks.addsupervisor' , compact('project','task'));
     }
+
+
        public function savesupervisor(Request $request,$id )
     {
       $task=Task::find($id);
@@ -65,7 +74,7 @@ class TaskController extends Controller
 
 
      }else{
-        return redirect(route('project.show' , $request->input('project') ))->with('status' , 'super Visor not Exist');
+        return redirect(route('addsupervisor' , $task->id ))->with('status' , 'super Visor not Exist');
      }
         
 

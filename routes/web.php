@@ -63,6 +63,9 @@ Route::post('department/{slug?}/update' , 'DepartmentController@save');
 
 
 
-// Abdelhamid
-Route::resource('/projectSchaduling', 'projschController');
+// subtask
+Route::get('subtask/{id}/create' , 'subtaskController@create')->name('subtask.create');
+Route::post('subtask/{id}/store' , 'subtaskController@store')->name('subtask.store');
+
+
 

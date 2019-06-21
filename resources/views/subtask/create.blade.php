@@ -2,9 +2,7 @@
 
 @section('content')
 <div class="container">
-
-    
-<form method="post">
+    <form method="post" action="{{ route('subtask.store',$task->id) }}">
         @csrf
         @foreach ($errors->all() as $error)
         <p class="alert alert-danger">{{ $error }}</p>
@@ -16,7 +14,7 @@
         @endif
         <legend>Create Task</legend>
         <div class="form-group">
-            <label for="formGroupExampleInput">Task Name</label>
+            <label for="formGroupExampleInput"> Name</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Task Name" name="name">
         </div>
 
