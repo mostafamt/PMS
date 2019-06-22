@@ -55,7 +55,8 @@
                         <th scope="col">Task Name</th>
                         <th scope="col">Start Date</th>
                         <th scope="col">End Date</th>
-                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+
 
                         <th scope="col">Super Visor</th>
 
@@ -73,7 +74,8 @@
                         </td>
                         <td>{!! $task->start_date !!}</td>
                         <td>{!! $task->end_date !!}</td>
-                        <td>{!! $task->description !!}</td>
+                        <td>{!! $task->status !!}</td>
+
                         
   {{--to add super visor name--}}
 <?php 

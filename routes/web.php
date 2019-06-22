@@ -70,6 +70,11 @@ Route::get('subtask/{id}/show' , 'subtaskController@show')->name('subtask_show')
 Route::get('subtask/{id}/userstask' , 'subtaskController@usertask')->name('subtask_user');
 Route::post('subtask/{id}/saveUsersTask' , 'subtaskController@saveUserTask')->name('subtask_saveusertask');
 
+Route::post('/task/{id}/running' , 'TaskController@Running')->name('Running');
+Route::post('/subtask/{id}/running' , 'subtaskController@running')->name('subtask_running');
+
+
+
 
 
 

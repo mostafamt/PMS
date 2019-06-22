@@ -19,7 +19,8 @@ class CreateProjectsTable extends Migration
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date');
-            $table->tinyInteger('status')->default(1);
+            $table->enum('Status', array('Passive','Running', 'Finished'))->default('Running');
+            //$table->tinyInteger('status')->default(1);
             $table->integer('user_id')->unsigned();
             $table->timestamps();
         });

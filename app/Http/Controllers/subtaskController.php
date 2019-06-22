@@ -71,6 +71,24 @@ $request->validate([
 
 
     }
+      public function Running(Request $request,$id )
+    {
+        $subtask=Subtask::find($id);
+        $task=Task::where('id',$subtask->task_id)->first();
+
+        if($task->status!='waiting'){
+           $subtask->Status=$request->input('status');
+           $subtask->save();
+           return back()->with('status' , 'Sub Task ' .$subtask->name.' now Running');
+
+        }else{
+                       return back()->with('status' , 'Task ' .$task->name.' now Waiting');
+
+
+        }
+
+
+    }
 
     /**
      * Display the specified resource.

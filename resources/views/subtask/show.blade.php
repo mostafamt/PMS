@@ -20,6 +20,15 @@
                 <p><strong>End Date :</strong> {!! $task->end_date !!}</p>
                 <p><strong>Description :</strong> {!! $task->description !!}</p>
                 <p><strong>status :</strong> {!! $task->Status !!}</p>
+                      @if($task->Status=='waiting')
+     <form method="post" action="{{ route('subtask_running',$task->id) }}">
+         @csrf
+                 <input type="hidden" name="status" value="Running">
+
+                <button type="submit" class="btn btn-primary">Running</button>
+                
+     </form><br>
+     @endif
 
                 <form method="post">
                     @csrf

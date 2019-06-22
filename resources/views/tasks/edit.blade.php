@@ -4,8 +4,17 @@
 @extends('layouts.app')
 
 @section('content')
+ @if (session('statuss'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('statuss') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
 
 <div class="container">
+    
 
     <div class="container col-md-10 col-md-offset-2">
         <div class="well well bs-component">
@@ -14,12 +23,26 @@
                 <p><strong>Start Date :</strong> {!! $task->start_date !!}</p>
                 <p><strong>End Date :</strong> {!! $task->end_date !!}</p>
                 <p><strong>Description :</strong> {!! $task->description !!}</p>
-                <form method="post">
+                <p><strong>Status :</strong>     {!! $task->status !!}</p>
+
+                <p><strong>Dependence1 :</strong> {!! $task->dependence1 !!}</p>
+                <p><strong>Dependence2 :</strong> {!! $task->dependence2 !!}</p>
+                @if($task->status=='waiting')
+     <form method="post" action="{{  route('Running',$task->id) }}">
+         @csrf
+                 <input type="hidden" name="status" value="Running">
+
+                <button type="submit" class="btn btn-primary">Running</button>
+                
+     </form><br>
+     @endif
+     <form method="post">
                     @csrf
                     <a href="{!! action('ProjectController@update' , $project->id ) !!}"
-                        class="btn btn-primary">Update</a>
+                        class="btn btn-primary">Edit</a>
                     <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+     </form>
+
 
             </div>
         </div>

@@ -17,23 +17,40 @@ class TaskController extends Controller
     public function create($id)
     {
         $project = Project::whereId($id)->firstOrFail();
-        return view('tasks.create' , compact('project'));
+        $tasks=Task::where('project_id',$project->id)->get();
+        return view('tasks.create' , compact('project','tasks'));
     }
 
     public function store($id , Request $request)
     {
+      $request->validate([
+    'name' => 'required',
+    'start_date' => 'required',
+    'end_date' => 'required',
+    'description' => 'required',
+
+]);
+      $project=Project::find($id);
+
+      if($request->input('dep_1')==$request->input('dep_2')&&$request->input('dep_2')!=null){
+            return back()->with('status' , 'oops dependence_1 is the same dependence_2 ');
+
+      }else{
 
 
-        $task = new Task(array(
-            'name' => $request->get('name') ,
-            'start_date' => $request->get('start_date'),
-            'end_date' => $request->get('end_date') ,
-            'description' => $request->get('description') ,
-            'project_id' => $id ,
-        ));
+       $task=new Task();
+       $task->name=$request->input('name');
+       $task->start_date=$request->input('start_date');
+       $task->end_date=$request->input('end_date');
+       $task->dependence1=$request->input('dep_1');
+       $task->dependence2=$request->input('dep_2');
+       $task->project_id=$project->id;
+       $task->description=$request->input('description');
+
         $task->save();
         return redirect(action('ProjectController@edit' , $id ))->with('status' , 'Task created successfully!');
     }
+  }
 
 
     public function edit($project_id , $task_id)
@@ -46,6 +63,60 @@ class TaskController extends Controller
 
         return view('tasks.edit',compact('task','project','subtask','counter'));
     }
+
+
+  
+     public function Running(Request $request,$id )
+    {
+  $task=Task::find($id);
+      $dep1=$task->dependence1;
+      $dep2=$task->dependence2;
+
+      $task_1=Task::where('id',$dep1)->first();
+      $task_2=Task::where('id',$dep2)->first();
+
+
+     if($dep1&&$dep2){
+         if($task_1->status=='Finished'&&$task_2->status=='Finished'){
+           $task->status=$request->input('status');
+           $task->save();
+           return back()->with('status' , 'Task ' .$task->name.' now Running');
+
+         }else{
+          
+           return back()->with('status' , 'oops  Task '.$task_1->name.' '.'and '.$task_2->name.' '.'not finished');
+         }
+
+      }elseif($dep1){
+        if($task_1->status=='Finished'){
+           $task->status=$request->input('status');
+           $task->save();
+           return back()->with('status' , 'Task ' .$task->name.' now Running');        }
+         else{
+          
+            return back()->with('status' , 'oops  Task '.$task_1->name.' not finished');
+
+        }
+
+      }elseif($dep2){
+         if($task_2->status=='Finished'){
+           $task->status=$request->input('status');
+           $task->save();
+           return back()->with('status' , 'Task ' .$task->name.' now Running');
+         }else{
+             return back()->with('status' , 'oops  Task '.$task_2->name.' not finished');
+
+        }
+
+      }else{
+        $task->status=$request->input('status');
+         $task->save();
+           return back()->with('status' , 'Task ' .$task->name.' now Running');
+
+      }
+    }
+  
+
     public function addsupervisor($id )
     {
            $task = Task::whereId($id)->firstOrFail();
@@ -56,11 +127,22 @@ class TaskController extends Controller
     }
 
 
+
+     
+
+
        public function savesupervisor(Request $request,$id )
     {
       $task=Task::find($id);
       $username=$request->input('supervisor');
+      $project = Project::where('id',$task->project_id)->first();
+
       $user=User::where('user_name',$username)->first();
+
+       
+        // dd($project);
+
+
       if($user){
 
          $task->name=$request->input('name');

@@ -30,6 +30,27 @@
             </button>
         </div>
         @endif
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <legend>Add Super Visor</legend>
         <div class="form-group">
            

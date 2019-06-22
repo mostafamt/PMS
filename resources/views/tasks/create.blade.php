@@ -13,6 +13,8 @@
         <div class="alert alert-success">
             {{ session('status') }}
         </div>
+        @endif
+
        
           @if (session('danger'))
         <div class="alert alert-success">
@@ -23,6 +25,28 @@
         <div class="form-group">
             <label for="formGroupExampleInput">Task Name</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Task Name" name="name">
+        </div>
+
+         <div class="form-group">
+            <label for="formGroupExampleInput">Dependence_1</label>
+            <select class="form-control" name="dep_1">
+                 <option></option>
+
+                @foreach($tasks as $task)
+
+                      <option value="{{ $task->id }}">{{ $task->name }}</option>
+                @endforeach
+            </select>
+        </div>
+         <div class="form-group">
+            <label for="formGroupExampleInput">Dependence_2</label>
+            <select class="form-control" name="dep_2">
+                 <option></option>
+
+                @foreach($tasks as $task)
+                      <option value="{{ $task->id }}">{{ $task->name }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="form-group">
