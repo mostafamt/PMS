@@ -74,7 +74,7 @@ class TaskController extends Controller
 
 
      }else{
-        return redirect(route('addsupervisor' , $task->id ))->with('status' , 'super Visor not Exist');
+        return redirect(route('addsupervisor' , $task->id ))->with('danger' , 'super Visor not Exist');
      }
         
 

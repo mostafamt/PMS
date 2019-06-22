@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Task;
 use App\Subtask;
 use App\Project;
+use App\Subtaskuser;
+use App\User;
+
+
+
 
 
 
@@ -75,7 +80,47 @@ $request->validate([
      */
     public function show($id)
     {
-        //
+        $counter=1;
+        $task=Subtask::find($id);
+        $taskusers=Subtaskuser::where('subtask_id',$task->id)->get();
+
+        return view('subtask.show',compact('task','taskusers','counter'));
+    }
+
+
+     public function usertask($id)
+    {
+        $task=Subtask::find($id);
+        return view('subtask.taskuser',compact('task'));
+    }
+
+     public function saveUserTask(Request $request,$id)
+    {
+        $request->validate([
+            'username' => 'required',
+            'description' => 'required',
+        ]);
+         $subtaskusers=new Subtaskuser;
+      $username=$request->input('username');
+      $user=User::where('user_name',$username)->first();
+      if($user){
+
+         $subtaskusers->user_id=$user->id;
+         $subtaskusers->subtask_id=$request->input('task');
+         $subtaskusers->description=$request->input('description');
+        
+         $subtaskusers->save();
+      return redirect(route('subtask_show' , $id))->with('status' ,'User'. '  '. $username . 's added successfully');
+
+
+     }else{
+         //return redirect(action('TaskController@edit' , [ 'project_id' => $project->id , 'task_id' => $task->id ]))->with('status' , 'Sub Task'.'  ' .$request->input('name') . '  ' .'created successfully!');
+      return redirect(route('subtask_user' , $id ))->with('danger' , 'User'. '  '. $username .' not Exist');
+     }
+        
+
+
+
     }
 
     /**

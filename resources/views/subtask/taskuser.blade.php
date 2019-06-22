@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form method="post" action="{{ route('subtask.store',$task->id) }}">
+    <form method="post" action="{{ route('subtask_saveusertask',$task->id) }}">
         @csrf
         @foreach ($errors->all() as $error)
         <p class="alert alert-danger">{{ $error }}</p>
@@ -13,30 +13,28 @@
         </div>
         @endif
          @if (session('danger'))
-        <div class="alert alert-dinger alert-dismissible fade show" role="alert">
-            {{ session('status') }}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('danger') }}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         @endif
-        <legend>Create Task</legend>
-        <div class="form-group">
-            <label for="formGroupExampleInput"> Name</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Task Name" name="name">
-        </div>
+        
+        <legend>Create Task for user</legend>
+        
 
         <div class="form-group">
             <!-- Date input -->
-            <label class="control-label" for="date">Start Date</label>
-            <input class="form-control" id="start_date" name="start_date" placeholder="YYYY/MM/DD" type="text" />
+            <label class="control-label" for="date">User Name</label>
+            <input class="form-control"  name="username" placeholder="user name" type="text" />
         </div>
 
-        <div class="form-group">
-            <!-- Date input -->
-            <label class="control-label" for="date">End Date</label>
-            <input class="form-control" id="end_date" name="end_date" placeholder="YYYY/MM/DD" type="text" />
-        </div>
+
+            <input   name="task" value="{{ $task->id }}" type="hidden" />
+
+
+       
 
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Description</label>

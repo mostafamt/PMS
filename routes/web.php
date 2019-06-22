@@ -66,6 +66,12 @@ Route::post('department/{slug?}/update' , 'DepartmentController@save');
 // subtask
 Route::get('subtask/{id}/create' , 'subtaskController@create')->name('subtask.create');
 Route::post('subtask/{id}/store' , 'subtaskController@store')->name('subtask.store');
+Route::get('subtask/{id}/show' , 'subtaskController@show')->name('subtask_show');
+Route::get('subtask/{id}/userstask' , 'subtaskController@usertask')->name('subtask_user');
+Route::post('subtask/{id}/saveUsersTask' , 'subtaskController@saveUserTask')->name('subtask_saveusertask');
+
+
+
 
 
 

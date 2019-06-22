@@ -4,6 +4,11 @@
 @extends('layouts.app')
 
 @section('content')
+<?php 
+   
+    use App\User;
+
+?>
 
 <div class="container">
 
@@ -14,10 +19,12 @@
                 <p><strong>Start Date :</strong> {!! $task->start_date !!}</p>
                 <p><strong>End Date :</strong> {!! $task->end_date !!}</p>
                 <p><strong>Description :</strong> {!! $task->description !!}</p>
+                <p><strong>status :</strong> {!! $task->Status !!}</p>
+
                 <form method="post">
                     @csrf
-                    <a href="{!! action('ProjectController@update' , $project->id ) !!}"
-                        class="btn btn-primary">Update</a>
+                    <a href=""
+                        class="btn btn-primary">Edit</a>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
 
@@ -43,36 +50,43 @@
             {{ session('status') }}
         </div>
         @endif
-        <h2>Sub Tasks</h2>
-        <a href="{!! route('subtask.create' , $task->id ) !!}" class="btn btn-success"><i
+        <h2>task's of users</h2>
+        <a href="{{ route('subtask_user',$task->id) }}" class="btn btn-success"><i
                 class="fa fa-plus"></i>
-            New Sub Task</a>
+            New Task for user</a>
        <div class="row mt-3">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">End Date</th>
-                       {{-- <th scope="col">Description</th> --}}
+                        <th scope="col">Status</th>
+                        <th scope="col">Description</th>
 
 
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($subtask as $task)
+                    
+                    @foreach ($taskusers as $value)
+
+<?php 
+   
+    $user=User::where('id',$value->user_id)->first();
+
+?>
+
+
                     <tr>
                         <th scope="row">{!! $counter++ !!}</th>
                         <td>
                             <a
-                                href="{{ route('subtask_show',$task->id) }}">
-                                {!! $task->name !!}
+                                href="">
+                                {!! $user->name !!}
                             </a>
                         </td>
-                        <td>{!! $task->start_date !!}</td>
-                        <td>{!! $task->end_date !!}</td>
-                       {{-- <td>{!! $task->description !!}</td> --}}
+                        <td>{!! $task->Status !!}</td>
+                        <td>{!! $task->description !!}</td>
 
     
                    

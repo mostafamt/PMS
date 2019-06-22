@@ -13,6 +13,11 @@
         <div class="alert alert-success">
             {{ session('status') }}
         </div>
+       
+          @if (session('danger'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
         @endif
         <legend>Create Task</legend>
         <div class="form-group">
