@@ -35,6 +35,7 @@ This is the first stone for our graduation project 'project Management System ' 
 
 ### How to push to our repo ?
 1 - ```git status```<br>
-2 - ```git add .```<br>
-3 - ```git commit -m "your comment"```<br>
-4 - ```git push https://github.com/mostafamt/PMS master```<br>
+2 - ```git pull push https://github.com/mostafamt/PMS```<br>
+3 - ```git add .```<br>
+4 - ```git commit -m "your comment"```<br>
+5 - ```git push https://github.com/mostafamt/PMS master```<br>
