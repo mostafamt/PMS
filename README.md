@@ -32,3 +32,9 @@ This is the first stone for our graduation project 'project Management System ' 
 7 - ```php artisan migrate``` <br>
 8 - This step is optional to fill database : ```php artisan db:seed```<br>
 9 - ```php artisan serve``` <br>
+
+### How to push to our repo ?
+1 - ```git status```<br>
+2 - ```git add .```<br>
+3 - ```git commit -m "your comment"```<br>
+4 - ```git push https://github.com/mostafamt/PMS master```<br>
