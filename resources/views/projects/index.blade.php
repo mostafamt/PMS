@@ -19,83 +19,47 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">project</th>
-
-                    <th scope="col">before finish</th>
-                    <th scope="col">after finish</th>
-                    <th scope="col">status</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Time to finish</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- counter for all projects --}}
-                <?php
-                   $counter = 0 ;
-                ?>
-                @foreach ($projects as $project)
-                <tr>
-                    <th scope="row"><?php echo $counter=++$counter;  ?></th>
-
-                    <td>
-                        <a href="{!! action('ProjectController@edit' , $project->id) !!}">{!! $project->project_name
-                            !!}</a>
-                    </td>
-
-
-                    <td>
-
-                        <?php
-
-                                        $date1=$project->end_date ;
-
-
-                                        $date2= Carbon\Carbon::now();
-
-                                        if($date1>$date2  && $project->isfinished==0){
-                                        $s2=Carbon\Carbon::parse($date2)->diffForHumans(Carbon\Carbon::parse($date1));
-                                        echo $s2;
-                                        }
-
-                                ?>
-                    </td>
-
-
-                    <td>
-                        <?php
-
-                                        $date1=$project->end_date ;
-
-
-                                        $date2= Carbon\Carbon::now();
-                                        if($date1<$date2 && $project->isfinished==0){
-                                        $s2=Carbon\Carbon::parse($date2)->diffForHumans(Carbon\Carbon::parse($date1));
-                                        echo $s2;
-                                        }
-
-                                ?>
-
-                    </td>
-                    <td>
-                          <?php
-
-                                        $date1=$project->end_date ;
-
-
-                                        $date2= Carbon\Carbon::now();
-
-                                        if($date1>$date2  && $project->isfinished==0){
-                                        $s2=Carbon\Carbon::parse($date2)->diffForHumans(Carbon\Carbon::parse($date1));
-                                        echo 'passive';
-                                        }elseif($date1<$date2  && $project->isfinished==0){
-                                        $s2=Carbon\Carbon::parse($date2)->diffForHumans(Carbon\Carbon::parse($date1));
-                                        echo 'running';
-                                        }else{
-                                            echo 'finished';
-                                        }
-
-                                ?>
-
-                    </td>
-                </tr>
-                @endforeach
+                    @for($i = 0 ; $i < $length ; $i++)
+                        @if ($projects[$i]->status == 'Finished')
+                            <tr class="table-success">
+                                <th scope="row">{!! $i+1 !!}</th>
+                                <td>
+                                    <a href="{!! action('ProjectController@edit' , $projects[$i]->id) !!}">
+                                        {!! $projects[$i]->project_name !!}
+                                    </a>
+                                </td>
+                                <td>{!! $projects[$i]->status !!}</td>
+                                <td>{!! $time_to_finish[$i] !!}</td>
+                            </tr>
+                        @elseif ($projects[$i]->status == 'Passive')
+                            <tr class="table-danger">
+                                <th scope="row">{!! $i+1 !!}</th>
+                                <td>
+                                    <a href="{!! action('ProjectController@edit' , $projects[$i]->id) !!}">
+                                        {!! $projects[$i]->project_name !!}
+                                    </a>
+                                </td>
+                                <td>{!! $projects[$i]->status !!}</td>
+                                <td>{!! $time_to_finish[$i] !!}</td>
+                            </tr>
+                        @else
+                            <tr">
+                                <th scope="row">{!! $i+1 !!}</th>
+                                <td>
+                                    <a href="{!! action('ProjectController@edit' , $projects[$i]->id) !!}">
+                                        {!! $projects[$i]->project_name !!}
+                                    </a>
+                                </td>
+                                <td>{!! $projects[$i]->status !!}</td>
+                                <td>{!! $time_to_finish[$i] !!}</td>
+                            </tr>
+                        @endif
+                @endfor
             </tbody>
         </table>
     </div>

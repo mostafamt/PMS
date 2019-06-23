@@ -22,7 +22,7 @@
                 <form method="post">
                     @csrf
                     <a href="{!! action('ProjectController@update' , $project->id ) !!}"
-                        class="btn btn-primary">Update</a>
+                        class="btn btn-primary">Edit</a>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
 
@@ -76,18 +76,18 @@
                         <td>{!! $task->end_date !!}</td>
                         <td>{!! $task->status !!}</td>
 
-                        
+
   {{--to add super visor name--}}
-<?php 
+<?php
   $user=User::where('id',$task->user_id)->first();
   if($task->user_id==null){
       ?> <td>  <a href="{{ route('addsupervisor',$task->id) }}" > Add Super Visor </a>  </td> <?php
   }else{
       echo "<td> $user->name </td>" ;
   }
- 
+
 ?>
-                   
+
 
                     </tr>
                     @endforeach

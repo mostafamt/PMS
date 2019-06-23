@@ -50,7 +50,7 @@
         <div class="form-group">
             <label>
                 <input type="checkbox" name="status" {!! $project->status == 3 ?"checked":""!!} >
-                Close this ticket?
+                Finish this Project?
             </label>
         </div>
 

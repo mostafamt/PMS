@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Project ;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ProjectFormRequest;
 use App\Http\Requests\ProjectUpdateFormRequest;
 use App\Http\Requests\ProjectCreateFormRequest;
 
-define('PASSIVE' , '1');
-define('RUNNING' , '2');
-define('FINISHED', '3');
+define('PASSIVE' , 'Passive');
+define('RUNNING' , 'Running');
+define('FINISHED', 'Finished');
 
 class ProjectController extends Controller
 {
@@ -37,8 +35,38 @@ class ProjectController extends Controller
 
     public function index()
     {
-      $projects=Project::where('user_id',Auth::user()->id)->get();
-        return view('projects.index' , compact('projects'));
+        $projects=Project::where('user_id',Auth::user()->id)->get();
+        $time_to_finish = array();
+        $today = date('Y-m-d');
+        foreach($projects as $project){
+            if( $project->status == FINISHED ){
+                array_push($time_to_finish,'-');
+            } elseif( $today < $project->end_date ){
+                $datetime1 = new \DateTime($today);
+                $datetime2 = new \DateTime($project->end_date);
+                $interval = $datetime1->diff($datetime2);
+                $months = $interval->format('%m');
+                if( $months ){
+                    array_push($time_to_finish , $interval->format('Finish in : %m month , %d days'));
+                } else {
+                    array_push($time_to_finish , $interval->format('Finish in : %d days'));
+                }
+                $project->status = RUNNING ;
+            } else {
+                $datetime1 = new \DateTime($today);
+                $datetime2 = new \DateTime($project->end_date);
+                $interval = $datetime1->diff($datetime2);
+                $months = $interval->format('%m');
+                if( $months ){
+                    array_push($time_to_finish , $interval->format('Finished From : %m month , %d days'));
+                } else {
+                    array_push($time_to_finish , $interval->format('Finished From : %d days'));
+                }
+                $project->status = PASSIVE ;
+            }
+        }
+        $length = count($projects);
+        return view('projects.index' , compact('projects','time_to_finish','length'));
     }
 
     public function edit($id)
@@ -70,7 +98,7 @@ class ProjectController extends Controller
             $project->status = FINISHED ;
         } else {
             $today = date('Y/m/d');
-            $project->status = $project->end_date > $today ? RUNNING : PASSIVE ;
+            $project->status = $project->end_date < $today ? RUNNING : PASSIVE ;
         }
 
         $project->save();
