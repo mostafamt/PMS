@@ -18,17 +18,29 @@
                     <th scope="col">Name</th>
                     <th scope="col">Username</th>
                     <th scope="col">Mobile</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">Email</th> 
+                    <th scope="col">Type Of Member</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($users as $user)
                 <tr>
                     <th scope="row">{!! $counter++ !!}</th>
-                    <td>{!! $user->name !!}</td>
+                                   
+                    <td>
+                    <a href="{!! action('MemberController@show' , $user->user_name) !!}">
+                    {!! $user->name !!}</a>
+                   </td>
                     <td>{!! $user->user_name !!}</td>
                     <td>{!! $user->mobile !!}</td>
                     <td>{!! $user->email !!}</td>
+                    @if($user->account == 0 )
+                    <td>ProjectOwner</td>
+                    @elseif( $user->account == 1)
+                    <td>SuperVisor</td>
+                    @else
+                    <td>Emplyee</td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

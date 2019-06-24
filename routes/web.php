@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+
+    
+
 
 Auth::routes();
 
@@ -47,7 +47,9 @@ Route::put('/task/{id}/Addsupervisor' , 'TaskController@savesupervisor')->name('
 
 
 // Members
-Route::get('members' , 'MemberController@index');
+Route::get('/members' , 'MemberController@index');
+Route::get('/users/{username?}', 'MemberController@show' );
+
 
 // Departments
 Route::get('department/create' , 'DepartmentController@create');

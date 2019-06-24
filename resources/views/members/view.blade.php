@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <head>
     <style>
         .profile-head h5
@@ -71,7 +72,7 @@
 </head>
 
 <div class="container emp-profile">
-            <form method="post">
+            <form method="get">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -84,7 +85,7 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        {{ Auth::user()->name }}
+                                        {!! $user->name !!}
                                     </h5>
                                     <h6>
                                         Web Developer and Designer
@@ -118,7 +119,8 @@
                                                 <label>User Id</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {{ Auth::user()->user_name }}</p>
+                                                <p> {!! $user->user_name !!}
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -126,7 +128,8 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {{ Auth::user()->name }}</p>
+                                                <p> {!! $user->name !!}
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -134,7 +137,8 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {{ Auth::user()->email }}</p>
+                                                <p> {!! $user->email !!}
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -142,7 +146,8 @@
                                                 <label>Phone</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {{ Auth::user()->mobile }}</p>
+                                                <p> {!! $user->mobile !!}
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -150,7 +155,8 @@
                                                 <label>Addres</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {{ Auth::user()->address }}</p>
+                                                <p> {!! $user->address !!}
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -158,7 +164,8 @@
                                                 <label>Job</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {{ Auth::user()->account }}</p>
+                                                <p> {!! $user->account !!} 
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -166,7 +173,8 @@
                                                 <label>Department</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {{ Auth::user()->department }}</p>
+                                                <p> {!! $user->department !!}
+                                                </p>
                                             </div>
                                         </div>
                             </div>
@@ -224,24 +232,4 @@
             </form>
         </div>
 
-<!--
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Welcome {{ Auth::user()->name }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
 @endsection
