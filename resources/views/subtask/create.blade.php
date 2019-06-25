@@ -20,7 +20,7 @@
             </button>
         </div>
         @endif
-        <legend>Create Task</legend>
+        <legend>Create Sub Task</legend>
         <div class="form-group">
             <label for="formGroupExampleInput"> Name</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Task Name" name="name">

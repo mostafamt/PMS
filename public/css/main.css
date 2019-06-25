@@ -623,6 +623,10 @@ body
 
     background-image: url(../images/Packaging-Ramdaz-iTunes.jpg);
     background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size:cover;
     background-size: 100%;
     height: 100vh;
     color: #FFF;
@@ -631,12 +635,20 @@ body
 }
 .contact .overly
 {
+    margin-top: 50px
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0 ,0 ,0 , .6);
     padding-bottom: 30px;
     padding-top: 100px;
+    /*margin-top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0 ,0 ,0 , .6);
+    padding-bottom: 30px;
+    padding-top: 50px;*/
 }
 
 .contact .h1
@@ -659,7 +671,9 @@ body
 }
 .contact .contact-form
 {
-    margin-top: 50px
+    margin-top: 50px;
+    margin-top: 20px;
+    
 }
 .contact-form input[type="text"],
 .contact-form input[type="email"]
@@ -812,10 +826,21 @@ body
     color: #0062cc;
 }
 
-
-
-
-
-
-
 /*start Profile page*/
+
+
+/*Start Footer Div*/
+.footer
+{
+    background-color: #24495F;
+    color: #EEE;
+    padding: 17px;
+    font-size: 18px;
+    display: block;
+    
+}
+
+
+
+
+/*End Footer Div*/
