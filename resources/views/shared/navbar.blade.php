@@ -31,6 +31,10 @@
         .navbar-expand-md .navbar-nav .nav-link:hover {
             color: dodgerblue;
         }
+
+        .circular {
+            border-radius: 50%;
+        }
     </style>
 
 </head>
@@ -82,13 +86,15 @@
 
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                        <img src="/images/one.jpg" class="img-fluid circular" alt="Responsive image" height="32"
+                            width="32"> {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
 
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{!! action('MemberController@show',Auth::user()->user_name) !!}">{{ __('Profile') }}</a>
+                        <a class="dropdown-item"
+                            href="{!! action('MemberController@show',Auth::user()->user_name) !!}">{{ __('Profile') }}</a>
 
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
