@@ -91,28 +91,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="type" class="col-md-4 col-form-label text-md-right">Account</label>
-                            <div class="col-md-6">
-                                <select class="form-control" id="account" name="account">
-                                    <option>Employee</option>
-                                    <option>supervisor</option>
-                                    <option>Project owner</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="type" class="col-md-4 col-form-label text-md-right">Department</label>
-                            <div class="col-md-6">
-                                <select class="form-control" id="department" name="department">
-                                    <option>Financial</option>
-                                    <option>Human resources</option>
-                                    <option>Not listed</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Mobile</label>
 
                             <div class="col-md-6">

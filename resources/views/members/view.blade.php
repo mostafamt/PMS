@@ -15,7 +15,7 @@
             margin-bottom: 15px;
         }
 
-       
+
         .profile-img .file  select, textarea
         {
             opacity: 0;
@@ -30,9 +30,8 @@
         .profile-img img
         {
             width: 80%;
-            border-radius: 10% 10% 0 0 ;
             height: 70%;
-            
+
         }
         .profile-img .file
         {
@@ -44,7 +43,7 @@
             font-weight:600;
             color: #5c555d;
             cursor: pointer;
-            
+
         }
         .profile-edit-btn
         {
@@ -57,7 +56,7 @@
             color: #5c555d;
             cursor: pointer;
         }
-        
+
         .profile-tab label
         {
            font-weight: 600;
@@ -76,7 +75,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="images/one.jpg" alt=""/>
+                            <img src="/images/one.jpg" alt=""/>
                             <div class="file btn btn-lg btn-primary">
                                 <input type="file" name="file" value="Change Photo"/>
                             </div>
@@ -90,7 +89,7 @@
                                     <h6>
                                         Web Developer and Designer
                                     </h6>
-                                    
+
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -108,7 +107,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
-                                                    
+
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -164,7 +163,7 @@
                                                 <label>Job</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {!! $user->account !!} 
+                                                <p> {!! $user->account !!}
                                                 </p>
                                             </div>
                                         </div>

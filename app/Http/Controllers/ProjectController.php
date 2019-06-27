@@ -45,22 +45,34 @@ class ProjectController extends Controller
                 $datetime1 = new \DateTime($today);
                 $datetime2 = new \DateTime($project->end_date);
                 $interval = $datetime1->diff($datetime2);
+                $days = $interval->format('%d');
                 $months = $interval->format('%m');
-                if( $months ){
-                    array_push($time_to_finish , $interval->format('Finish in : %m month , %d days'));
+                $years = $interval->format('%y');
+                if($years){
+                    array_push($time_to_finish , 'Finish in : '.$years.' year ,'.$months.' month ,'.$days.' days');
                 } else {
-                    array_push($time_to_finish , $interval->format('Finish in : %d days'));
+                    if( $months ){
+                        array_push($time_to_finish , $interval->format('Finish in : '.$months.' month ,'.$days.' days'));
+                    } else {
+                        array_push($time_to_finish , $interval->format('Finish in : '.$days.' days'));
+                    }
                 }
                 $project->status = RUNNING ;
             } else {
                 $datetime1 = new \DateTime($today);
                 $datetime2 = new \DateTime($project->end_date);
                 $interval = $datetime1->diff($datetime2);
+                $days = $interval->format('%d');
                 $months = $interval->format('%m');
-                if( $months ){
-                    array_push($time_to_finish , $interval->format('Finished From : %m month , %d days'));
+                $years = $interval->format('%y');
+                if($years){
+                    array_push($time_to_finish , 'Finished From : '.$years.' year ,'.$months.' month ,'.$days.' days ago');
                 } else {
-                    array_push($time_to_finish , $interval->format('Finished From : %d days'));
+                    if( $months ){
+                        array_push($time_to_finish , $interval->format('Finished From : '.$months.' month ,'.$days.' days ago'));
+                    } else {
+                        array_push($time_to_finish , $interval->format('Finished From : '.$days.' days ago'));
+                    }
                 }
                 $project->status = PASSIVE ;
             }

@@ -64,17 +64,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $account = 0 ;
-        if( $data['account'] == 'Manager' ){
-            $account = 1 ;
-        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'user_name' => $data['user_name'],
             'password' => Hash::make($data['password']),
-            'account' => $account ,
-            'department' => $data['department'] ,
             'mobile' => $data['mobile'] ,
             'phone' => $data['phone'] ,
             'address' => $data['address'] ,

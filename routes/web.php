@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-    
+Route::get('/test' , 'TestController@test');
 
 
 Auth::routes();
@@ -68,7 +68,11 @@ Route::post('department/{slug?}/update' , 'DepartmentController@save');
 // subtask
 Route::get('subtask/{id}/create' , 'subtaskController@create')->name('subtask.create');
 Route::post('subtask/{id}/store' , 'subtaskController@store')->name('subtask.store');
-Route::get('subtask/{id}/show' , 'subtaskController@show')->name('subtask_show');
+
+Route::get('subtask/{id?}/show' , 'subtaskController@show')->name('subtask_show');
+Route::post('subtask/{id?}/show' , 'subtaskController@finish');
+
+
 Route::get('subtask/{id}/userstask' , 'subtaskController@usertask')->name('subtask_user');
 Route::post('subtask/{id}/saveUsersTask' , 'subtaskController@saveUserTask')->name('subtask_saveusertask');
 
@@ -76,7 +80,10 @@ Route::post('/task/{id}/running' , 'TaskController@Running')->name('Running');
 Route::post('/subtask/{id}/running' , 'subtaskController@running')->name('subtask_running');
 
 
-
+// Task navbar
+Route::get('/tasks/{user_id?}' , 'TaskController@index');
+//Subtask navbar
+Route::get('/subtasks/{user_id?}' , 'subtaskController@index');
 
 
 

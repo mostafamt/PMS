@@ -65,7 +65,7 @@ class TaskController extends Controller
     }
 
 
-  
+
      public function Running(Request $request,$id )
     {
   $task=Task::find($id);
@@ -83,7 +83,7 @@ class TaskController extends Controller
            return back()->with('status' , 'Task ' .$task->name.' now Running');
 
          }else{
-          
+
            return back()->with('status' , 'oops  Task '.$task_1->name.' '.'and '.$task_2->name.' '.'not finished');
          }
 
@@ -93,7 +93,7 @@ class TaskController extends Controller
            $task->save();
            return back()->with('status' , 'Task ' .$task->name.' now Running');        }
          else{
-          
+
             return back()->with('status' , 'oops  Task '.$task_1->name.' not finished');
 
         }
@@ -115,7 +115,7 @@ class TaskController extends Controller
 
       }
     }
-  
+
 
     public function addsupervisor($id )
     {
@@ -128,10 +128,10 @@ class TaskController extends Controller
 
 
 
-     
 
 
-       public function savesupervisor(Request $request,$id )
+
+    public function savesupervisor(Request $request,$id )
     {
       $task=Task::find($id);
       $username=$request->input('supervisor');
@@ -139,7 +139,7 @@ class TaskController extends Controller
 
       $user=User::where('user_name',$username)->first();
 
-       
+
         // dd($project);
 
 
@@ -155,14 +155,19 @@ class TaskController extends Controller
       return redirect(route('project.show' , $request->input('project') ))->with('status' , 'super Visor added successfully');
 
 
-     }else{
-        return redirect(route('addsupervisor' , $task->id ))->with('danger' , 'super Visor not Exist');
-     }
-        
-
-
-
-
+        }else{
+            return redirect(route('addsupervisor' , $task->id ))->with('danger' , 'super Visor not Exist');
+        }
     }
-  
+
+    public function index($user_id)
+    {
+        $user = User::whereId($user_id)->firstOrFail();
+        $tasks = $user->tasks()->get();
+        $counter = 1 ;
+        $length = count($tasks);
+        // dd($length);
+        return view('tasks.index' , compact('tasks','counter'));
+    }
+
 }

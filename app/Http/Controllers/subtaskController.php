@@ -23,9 +23,13 @@ class subtaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        //
+        $user = User::whereId($user_id)->firstOrFail();
+        $subtasks = $user->subtasks()->get();
+        $counter = 1 ;
+        $length = count($subtasks);
+        return view('subtask.index' , compact('subtasks','counter'));
     }
 
     /**
@@ -47,29 +51,28 @@ class subtaskController extends Controller
      */
     public function store(Request $request,$id)
     {
-$request->validate([
-    'name' => 'required',
-    'start_date' => 'required',
-    'end_date' => 'required',
-    'description' => 'required',
-
-]);
+        $request->validate([
+            'name' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'description' => 'required',
+        ]);
 
        $task=Task::find($id);
        $project=Project::where('id',$task->project_id)->first();
-      
+
        $subtask=new Subtask();
        $subtask->name=$request->input('name');
        $subtask->start_date=$request->input('start_date');
        $subtask->end_date=$request->input('end_date');
        $subtask->description=$request->input('description');
        $subtask->task_id=$task->id;
+       $username = $request->input('username');
+       $user = User::where('user_name' , $username)->firstOrFail();
+       $user_id = $user->id ;
+       $subtask->user_id = $user->id ;
        $subtask->save();
        return redirect(action('TaskController@edit' , [ 'project_id' => $project->id , 'task_id' => $task->id ]))->with('status' , 'Sub Task'.'  ' .$request->input('name') . '  ' .'created successfully!');
-       // href="{!! action('TaskController@edit' , [ 'project_id' => $project->id , 'task_id' => $task->id ] ) !!}"
-       
-
-
     }
       public function Running(Request $request,$id )
     {
@@ -98,11 +101,15 @@ $request->validate([
      */
     public function show($id)
     {
-        $counter=1;
-        $task=Subtask::find($id);
-        $taskusers=Subtaskuser::where('subtask_id',$task->id)->get();
+        $subtask=Subtask::find($id);
+        $user_has_id = $subtask->user->id ;
+        $logged_user = Auth::user()->id ;
+        $is_subtask_belongs_to_this_employee = false ;
+        if( $user_has_id == $logged_user ){
+            $is_subtask_belongs_to_this_employee = true ;
+        }
 
-        return view('subtask.show',compact('task','taskusers','counter'));
+        return view('subtask.show',compact('subtask','is_subtask_belongs_to_this_employee'));
     }
 
 
@@ -126,7 +133,7 @@ $request->validate([
          $subtaskusers->user_id=$user->id;
          $subtaskusers->subtask_id=$request->input('task');
          $subtaskusers->description=$request->input('description');
-        
+
          $subtaskusers->save();
       return redirect(route('subtask_show' , $id))->with('status' ,'User'. '  '. $username . 's added successfully');
 
@@ -135,7 +142,7 @@ $request->validate([
          //return redirect(action('TaskController@edit' , [ 'project_id' => $project->id , 'task_id' => $task->id ]))->with('status' , 'Sub Task'.'  ' .$request->input('name') . '  ' .'created successfully!');
       return redirect(route('subtask_user' , $id ))->with('danger' , 'User'. '  '. $username .' not Exist');
      }
-        
+
 
 
 
@@ -173,5 +180,19 @@ $request->validate([
     public function destroy($id)
     {
         //
+    }
+
+    public function finish(Request $request,$id)
+    {
+        $subtask = Subtask::whereId($id)->firstOrFail();
+        if ( $request->get('status') != null ){
+            $subtask->Status = 'Finished' ;
+            $subtask->save();
+            return redirect( route('subtask_show' , $id) )->with('status' , 'Awesome , Thank you for your great job!');
+        } else {
+            $subtask->Status = 'Running' ;
+            $subtask->save();
+            return redirect( route('subtask_show' , $id) )->with('status' , 'This subtask has not finished yet!');
+        }
     }
 }

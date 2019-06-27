@@ -12,7 +12,7 @@
             {{ session('status') }}
         </div>
         @endif
-         @if (session('danger'))
+        @if (session('danger'))
         <div class="alert alert-dinger alert-dismissible fade show" role="alert">
             {{ session('status') }}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -20,9 +20,9 @@
             </button>
         </div>
         @endif
-        <legend>Create Sub Task</legend>
+        <legend>Create Subtask</legend>
         <div class="form-group">
-            <label for="formGroupExampleInput"> Name</label>
+            <label for="formGroupExampleInput">Subtask Name</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Task Name" name="name">
         </div>
 
@@ -36,6 +36,12 @@
             <!-- Date input -->
             <label class="control-label" for="date">End Date</label>
             <input class="form-control" id="end_date" name="end_date" placeholder="YYYY/MM/DD" type="text" />
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput">Employee Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Employee Username"
+                name="username">
         </div>
 
         <div class="form-group">
@@ -64,4 +70,4 @@
                       end_date.datepicker(options);
                     });
     </script>
-@endsection
+    @endsection

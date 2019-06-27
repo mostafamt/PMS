@@ -13,6 +13,12 @@
     <div class="row">
         <a href="/project/create" class="btn btn-primary"><i class="fa fa-plus"></i> New Project</a>
     </div>
+    @if($length == 0 )
+    <br>
+    <div class="row">
+        <p>You don't have any project yet .</p>
+    </div>
+    @else
     <div class="row mt-3">
         <table class="table">
             <thead>
@@ -63,5 +69,6 @@
             </tbody>
         </table>
     </div>
+    @endif
 </div>
 @endsection

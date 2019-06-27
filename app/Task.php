@@ -14,4 +14,9 @@ class Task extends Model
         return $this->belongsTo('App\Project');
     }
 
+    public function User()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }

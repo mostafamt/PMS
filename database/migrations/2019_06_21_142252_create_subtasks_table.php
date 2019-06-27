@@ -22,7 +22,9 @@ class CreateSubtasksTable extends Migration
             $table->enum('Status', array('waiting','Passive','Running', 'Finished'))->default('waiting');
 
             $table->bigInteger('task_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('task_id')->references('id')->on('tasks')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
